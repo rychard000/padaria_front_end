@@ -1,0 +1,27 @@
+.footerContainer{
+    display: flex;
+    color: white;
+    padding: 55px 0;
+    gap: 1px;
+    justify-content: center;
+    background-color: var(--FooterColor);
+}
+
+.topicsFooterDivs{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.iconsDivFooter{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 25px;
+}
+
+.h1Footer{
+    font-size: 17px;
+    padding-bottom: 5px;
+    color: var(--TextFooter);
+}

@@ -1,0 +1,55 @@
+.headerPedidosCarrinho{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 100px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+}
+
+.linkHomePedidosCarrinho{
+    width: 150px;
+    height: 100px;
+}
+
+.ulPedidosCarrinho{
+    font-weight: 500;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.sectionPedidosCarrinho{
+    min-height: 100vh;
+    margin-top: 140px;
+}
+
+.divContainerSeusPediosPedidosCarrinho{
+    display: flex;
+    gap: 7px;
+    padding-left: 50px;
+    padding-top: 60px;
+}
+
+.divContainerTotalPricePedidosCarrinho{
+    border-top: solid 1px black;
+    position: absolute;
+    width: 90vw;
+    bottom: -100px;
+    left: 3.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.buttonPedidosCarrinho{
+    padding: 10px;
+    border-radius: 4px;
+    width: fit-content;
+    background-color: var(--FooterColor);
+    color: var(--CreamColor);
+}

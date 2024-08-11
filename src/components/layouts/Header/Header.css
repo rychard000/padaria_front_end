@@ -1,0 +1,22 @@
+.headerContainer{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 100px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+}
+
+.linkHomeHeader{
+    width: 150px;
+    height: 100px;
+}
+
+.ulHeader{
+    font-weight: 500;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

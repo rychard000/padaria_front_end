@@ -1,0 +1,21 @@
+.produtoCardContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.produtoCardTitleSpan{
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 9px;
+    width: 251px;
+    color: var(--DefaultColor);
+}
+
+.produtoCardButton{
+    color: white;
+    padding: 11px 10px;
+    border-radius: 4px;
+    width: fit-content;
+    background-color: var(--DefaultColor);
+}

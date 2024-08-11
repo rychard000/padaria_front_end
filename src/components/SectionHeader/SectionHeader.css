@@ -1,0 +1,29 @@
+.sectionHeaderContainerDiv{
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    padding: 60px;
+    margin-top: 140px;
+}
+
+.titleContentH1SectionHeader{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    justify-content: center;
+    align-self: flex-start;
+}
+
+.h1SectionHeader{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--DefaultColor);
+}
+
+.buttonSectionHeader{
+    border: solid 2px var(--DefaultColor);
+    color: var(--DefaultColor);
+    border-radius: 25px;
+    padding: 7px 20px;
+    width: fit-content;
+}

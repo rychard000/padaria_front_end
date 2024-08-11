@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.itemsCenter{
+    display: flex;
+    align-items: center;
+}
+
+.justityCenter{
+    display: flex;
+    justify-content: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justifyItemsCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemsCol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teste{
+    background-color: blueviolet;
+}
+
+.cursorPointer{
+    cursor: pointer;
+}
+
+:root{
+    --DefaultColor:#7C1F2A;
+    --FooterColor :#501914;
+    --TextFooter :#FFE3C6;
+    --WhiteGrey :#C3C6D1;
+    --MidGrey :#666666;
+    --CreamColor :#E2D3C5;
+    --CreamColor2 :#CFC8D8;
+}

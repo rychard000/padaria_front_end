@@ -1,0 +1,43 @@
+.divContainerHeader{
+    margin-top: 250px;
+    margin-bottom: 100px;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.titleContentRegistrar{
+    display: flex;
+    gap: 7px;
+    padding-left: 70px;
+    align-self: flex-start;
+}
+
+.formContainerRegistrar{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 18px;
+    border-radius: 4px;
+    border: solid 1px var(--WhiteGrey);
+    border-color: var(--MidGrey);
+}
+
+.inputFormRegistrar{
+    border-width: 1px;
+    outline: none;
+    border-radius: 4px;
+    padding: 7px;
+    border-color: var(--MidGrey);
+}
+
+.buttonRegistrar{
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--CreamColor);
+    background-color: var(--FooterColor);
+}

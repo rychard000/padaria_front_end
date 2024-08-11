@@ -1,0 +1,71 @@
+.sectionDetailsProduct{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 100px;
+}
+
+.containerOptionsDetailsProduct{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.containerDivOptionsDetailsProduct{
+    display: flex;
+    gap: 40px;
+}
+
+.cardDetailsProduct{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 550px;
+}
+
+.buttonDetailsProduct{
+    border: solid 2px var(--DefaultColor);
+    color: var(--DefaultColor);
+    background-color: white;
+    border-radius: 4px;
+    padding: 7px 20px;
+    width: fit-content;
+    font-size: 19px;
+}
+
+.optionNumberDetailsProduct{
+    border: solid 2px var(--WhiteGrey);
+    width: 50px;
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.divSocialMediasDetailsProduct{
+    color: var(--DefaultColor);
+    font-size: 18px;
+    display: flex;
+    gap: 12px;
+}
+
+.descriptionButtonsDetailsProduct{
+    color: rgb(65, 65, 65);
+    background-color: rgb(236, 236, 236);
+    font-weight: 500;
+    padding: 5px;
+}
+
+.descriptionContainerDetailsProduct{
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+.footerContainerDetailsProduct{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
