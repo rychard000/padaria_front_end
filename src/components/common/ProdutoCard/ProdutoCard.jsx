@@ -6,7 +6,7 @@ import { addProductToCart } from '../../../Redux/Cart/Action';
 import './ProdutoCard.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProdutoCard({product}){
 
@@ -30,6 +30,11 @@ export default function ProdutoCard({product}){
             notify()
         }
     };
+    
+    const navigate = useNavigate();
+    const handleViewProduct = () => {
+        navigate(`/details-product/${product.id}`, { state: { product } });
+    };
 
     return(
         <div className='produtoCardContainer'>
@@ -44,13 +49,7 @@ export default function ProdutoCard({product}){
                     <span style={{paddingRight:'10px'}}>Adicionar</span>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </button>
-                {/* <Link to='/details-product'><span style={{paddingRight:'10px'}}>Ver Produto</span></Link> */}
-                <Link to={{
-                    pathname: `/product/${product.id}`,
-                    state: { product }
-                }}>
-                    <button>Ver Produto</button>
-                </Link>
+                <button onClick={handleViewProduct} className='produtoCardButton'>Ver Produto</button>
             </div>
         </div>
     )
