@@ -7,6 +7,14 @@ export const addProductToCart = (payload) =>{
     }
 }
 
+export const addProductToCartValue = (payload,value) =>{ 
+    return {
+        type:CartActionTypes.ADD_PRODUCT_VALUE,
+        payload,
+        value
+    }
+}
+
 export const removeProduct = (payload) => ({
     type: CartActionTypes.REMOVE_PRODUCT,
     payload,

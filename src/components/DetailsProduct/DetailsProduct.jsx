@@ -7,7 +7,8 @@ import { faFacebook, faXTwitter, faWhatsapp } from '@fortawesome/free-brands-svg
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 import { useLocation } from 'react-router-dom';
 import { useState } from "react";
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 import doces1 from '../../assets/imgs/doces-1.jpg';
 import doces2 from '../../assets/imgs/doces-2.jpg';
@@ -19,45 +20,49 @@ import produto2 from '../../assets/imgs/produto-2.png';
 import produto3 from '../../assets/imgs/produto-3.png';
 import produto4 from '../../assets/imgs/produto-4.png';
 import ProdutoCard from "../common/ProdutoCard/ProdutoCard";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProductToCartValue } from '../../Redux/Cart/Action';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 
 export default function DetailsProduct(){
 
     const [quantity, setQuantity] = useState(1)
-    // const quantityRef = useRef(1);
+    console.log(quantity)
+    
+    const dispatch = useDispatch();
+    const notify = () => toast.error('Faca login para adicionar ao carrinho', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
+
+    const notify2 = () => toast.success('Produto(s) adicionado ao carrinho com sucesso!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
 
     if(quantity < 1){
         setQuantity(1)
     }
 
-    // const handleQuantityChange = (e) => {
-    //     const newValue = parseInt(e.target.value, 10);
-    //     if (newValue < 1) {
-    //         quantityRef.current = 1;
-    //     } else {
-    //         quantityRef.current = newValue;
-    //     }
-    //     console.log('Nova Quantidade:', quantityRef.current);
-    // };
-
     const location = useLocation();
     const { product } = location.state;
     const productId = product.id
-
-    // const allProducts = [
-    //     [
-    //         { id:1, img: produto1, titulo: 'Bolo de milho (350g)', preco: 26.50 },
-    //         { id:2, img: produto2, titulo: 'Bolo de chocolate com paçoca (400g)', preco: 26.50 },
-    //         { id:3, img: produto3, titulo: 'Bolo de paçoca (400g)', preco: 36 },
-    //         { id:4, img: produto4, titulo: 'Cesta Arraiá', preco: 142 }
-    //     ],
-    //     [
-    //         { id:5, img: doces1, titulo: 'Bolo Nega Maluca', preco: 68 },
-    //         { id:6, img: doces2, titulo: 'Camafeu de nozes com fondant', preco: 68.75 },
-    //         { id:7, img: doces3, titulo: 'Torta Alemã', preco: 80.30 },
-    //         { id:8, img: doces4, titulo: 'Brigadeiro Preto festa', preco: 48.75 }
-    //     ]
-    // ]
 
     const allProducts = useMemo(() => [
         { id: 1, img: produto1, titulo: 'Bolo de milho (350g)', preco: 26.50 },
@@ -70,16 +75,6 @@ export default function DetailsProduct(){
         { id: 8, img: doces4, titulo: 'Brigadeiro Preto festa', preco: 48.75 }
     ], []);
 
-    // console.log(allProducts[1][1]['id'])
-
-    //faca um array direto com os objetos ou seja 1 array e 8 objetos
-    // const mapAllProducts = allProducts.flatMap(productList => productList);
-    // //metodo de embaralhar os objetos dentro do array,ou seja id 1 de um produto pode ser no final,no inicio,e me tras so os diferente
-    // //do produto que o usuario ja esta vendo, e me tras somente 4 dos mesmo para mostrar mais produtos relacionandos
-    // const shuffledProducts = mapAllProducts.sort(() => Math.random() - 0.5).filter(product=>product.id !== productId).slice(0,4)
-
-    // console.log(shuffledProducts)
-
     const shuffledProducts = useMemo(() => 
         allProducts
             .sort(() => Math.random() - 0.5)
@@ -87,10 +82,31 @@ export default function DetailsProduct(){
             .slice(0, 4)
     , [productId]);
 
+    const handleAddProduct = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/get-user', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+            if (response.status === 200) {
+                product.quantity = quantity
+                dispatch(addProductToCartValue(product));
+                notify2();
+            } else {
+                notify();
+            }
+        } catch (err) {
+            console.error(err);
+            notify();
+        }
+    };
+
     return(
         <div>
             <Header/>
             <div className="sectionDetailsProduct">
+                <ToastContainer />
 
                 <div className="containerOptionsDetailsProduct">
 
@@ -121,7 +137,13 @@ export default function DetailsProduct(){
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
                                 />
-                                <button className='buttonDetailsProduct'>Comprar</button>
+                                {/* <button className='buttonDetailsProduct'>Comprar</button> */}
+                                <button className='produtoCardButton'
+                                    onClick={handleAddProduct}
+                                >
+                                    <span style={{paddingRight:'10px'}}>Adicionar</span>
+                                    <FontAwesomeIcon icon={faCartShopping} />
+                                </button>
                             </div>
                             <div className="divSocialMediasDetailsProduct">
                                 <span>Compartilhe: </span>
@@ -160,7 +182,7 @@ export default function DetailsProduct(){
                     
                     <div className="footerContainerDetailsProduct">
                         <h1 style={{fontSize:'32px', color:'var(--DefaultColor)'}}>Produtos Relacionados</h1>
-                        <div>
+                        <div className="wrap" style={{gap:'45px'}}>
                             {shuffledProducts.map((product, index)=>(
                                 <ProdutoCard key={index} product={product}/>
                             ))}

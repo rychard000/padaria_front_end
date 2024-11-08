@@ -1,6 +1,6 @@
 export const selectProductCount = (rootReducer) =>{
     return rootReducer.cartReducer.products.reduce((acc, product) =>{
-        return acc + product.quantity
+        return parseFloat(acc + product.quantity)
     },0)
 }
 
