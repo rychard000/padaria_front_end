@@ -8,7 +8,6 @@ import UserEdit from '../components/UserEdit/UserEdit'
 import PrivateRoute from '../components/Context/PrivateRoute';
 import AutenticatesRoutes from "../components/Context/AutenticatesRoutes";
 import DetailsProduct from "../components/DetailsProduct/DetailsProduct";
-// import { AuthProvider } from '../components/Context/AuthContext';
 
 export default function AppRoutes(){
     return(
@@ -19,7 +18,7 @@ export default function AppRoutes(){
                 <Route path="/login" element={<AutenticatesRoutes><Login /></AutenticatesRoutes>} />
                 <Route path="/edit-user" element={<UserEdit/>}/>
                 <Route path="/cart" element={<PrivateRoute><PedidosCarrinho /></PrivateRoute>} />
-                <Route path="/product/:id" element={<DetailsProduct />} />
+                <Route path="/details-product/:id" element={<DetailsProduct />} />
             </Routes>
         </BrowserRouter>
     )
